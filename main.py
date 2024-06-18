@@ -9,8 +9,8 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.firefox.options import Options
 
 # akun email PENS
-email = "jhiven@it.student.pens.ac.id" # bukan akun asli
-password = "jhivenelek123"
+email = "gandirayu@it.student.pens.ac.id" # bukan akun asli
+password = "11duriangN"
 
 def isi_kuesioner(tipe_kuisioner, driver):
     wait = WebDriverWait(driver, 60)
@@ -51,8 +51,11 @@ def isi_kuesioner(tipe_kuisioner, driver):
         driver.quit()
 
     for i in range(1, len(select_matakuliah.options)):
+        
         try:
             matkul = select_matakuliah.options[i].text
+            if matkul == "Kreatifitas Mahasiswa 3":
+                continue
         except StaleElementReferenceException:
             select_matakuliah = Select(driver.find_element(by.ID, "cbMatakuliah"))
             matkul = select_matakuliah.options[i].text
