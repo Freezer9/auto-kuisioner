@@ -53,6 +53,9 @@ def isi_kuesioner(tipe_kuisioner, driver):
     for i in range(1, len(select_matakuliah.options)):
         try:
             matkul = select_matakuliah.options[i].text
+            # Jika matkul broken (Kreatifitas Mahasiswa 3)
+            if matkul == "Kreatifitas Mahasiswa 3":
+                continue
         except StaleElementReferenceException:
             select_matakuliah = Select(driver.find_element(by.ID, "cbMatakuliah"))
             matkul = select_matakuliah.options[i].text
